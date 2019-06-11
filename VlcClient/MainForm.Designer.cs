@@ -1,6 +1,6 @@
 ﻿namespace VlcClient
 {
-    partial class videoStreamClient
+    partial class VideoStreamClient
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -44,7 +44,7 @@
             this.vlcControl.Text = "vlcControl1";
             this.vlcControl.VlcLibDirectory = null;
             this.vlcControl.VlcMediaplayerOptions = null;
-            this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl_VlcLibDirectoryNeeded);
+            this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.VlcLibDirectoryNeededHandler);
             // 
             // Sample
             // 

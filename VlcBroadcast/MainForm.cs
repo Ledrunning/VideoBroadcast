@@ -7,89 +7,85 @@ using Vlc.DotNet.Core;
 
 namespace VlcBroadcast
 {
-	public partial class VideoServer : Form
-	{
-		private FileInfo _file;
-		private DirectoryInfo _libDirectory;
-		private string _currentDirectory;
-		private VlcMediaPlayer _mediaPlayer;
+    public partial class VideoServer : Form
+    {
+        private string _currentDirectory;
+        private FileInfo _file;
+        private DirectoryInfo _libDirectory;
+        private VlcMediaPlayer _mediaPlayer;
 
-		public VideoServer()
-		{
-			InitializeComponent();
-			VlcInitialize();
-		}
+        public VideoServer()
+        {
+            InitializeComponent();
+            VlcInitialize();
+        }
 
-		private void btnStart_Click(object sender, EventArgs e)
-		{
+        private void VlcInitialize()
+        {
+            _currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
-			btnStop.Enabled = true;
-			btnStart.Enabled = false;
+            // Default installation path of VideoLAN.LibVLC.Windows
+            // You should copy it into bin Debug or Release folder.
+            _libDirectory =
+                new DirectoryInfo(Path.Combine(_currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+            _file = new FileInfo(@"your path to file");
+        }
 
-			try
-			{
-				_mediaPlayer = new VlcMediaPlayer(_libDirectory);
+        private void OnStartClick(object sender, EventArgs e)
+        {
+            btnStop.Enabled = true;
+            btnStart.Enabled = false;
 
-				#region RTSP option
+            try
+            {
+                _mediaPlayer = new VlcMediaPlayer(_libDirectory);
 
-				//var mediaOptions = new[]
-				//{
-				//    ":sout=#rtp{sdp=rtsp://192.168.1.162:8008/test}",
-				//    ":sout-keep"
-				//};
+                #region RTSP option
 
-				#endregion
+                //var mediaOptions = new[]
+                //{
+                //    ":sout=#rtp{sdp=rtsp://192.168.1.162:8008/test}",
+                //    ":sout-keep"
+                //};
 
-				#region HTTP option
+                #endregion
+
+                #region HTTP option
 
                 // Options with video and audio encoders
-				var mediaOptions = new[]
-				{
-					":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
-					":sout-all" 
-				};
+                var mediaOptions = new[]
+                {
+                    ":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
+                    ":sout-all"
+                };
 
+                #endregion
 
-				#endregion
+                _mediaPlayer.SetMedia(_file, mediaOptions);
+                _mediaPlayer.Play();
 
-				_mediaPlayer.SetMedia(_file, mediaOptions);
-				_mediaPlayer.Play();
-	 
-				Debug.WriteLine($"Streaming is started on http://192.168.1.162:8080/ { DateTime.Now}");
+                Debug.WriteLine($"Streaming is started on http://192.168.1.162:8080/ {DateTime.Now}");
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine($"Error : {exception}");
+            }
+        }
 
-			}
-			catch (Exception exception)
-			{
-				Debug.WriteLine($"Error : {exception}");
-			}
+        private void OnStopClick(object sender, EventArgs e)
+        {
+            btnStart.Enabled = true;
+            btnStop.Enabled = false;
 
-		}
-
-		private void btnStop_Click(object sender, EventArgs e)
-		{
-			btnStart.Enabled = true;
-			btnStop.Enabled = false;
-
-			try
-			{
-				_mediaPlayer.Stop();
-				_mediaPlayer.Dispose();
-			}
-			catch (Exception exception)
-			{
-				Debug.WriteLine($"Error: {exception}");
-			}
-		   
-		}
-
-		private void VlcInitialize()
-		{
-			_currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-
-			// Default installation path of VideoLAN.LibVLC.Windows
-            // You should copy it into bin Debug or Release folder.
-			_libDirectory = new DirectoryInfo(Path.Combine(_currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
-			_file = new FileInfo(@"your path to file");
-		}
-	}
+            try
+            {
+                _mediaPlayer.Stop();
+                _mediaPlayer.Dispose();
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine($"Error: {exception}");
+            }
+        }
+    }
 }

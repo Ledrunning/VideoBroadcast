@@ -51,7 +51,7 @@
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Старт";
             this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnStart.Click += new System.EventHandler(this.OnStartClick);
             // 
             // btnStop
             // 
@@ -61,7 +61,7 @@
             this.btnStop.TabIndex = 3;
             this.btnStop.Text = "Стоп";
             this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnStop.Click += new System.EventHandler(this.OnStopClick);
             // 
             // VideoServer
             // 
