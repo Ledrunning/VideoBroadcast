@@ -52,7 +52,7 @@ namespace VlcBroadcast
 
                 #region HTTP option
 
-                // Options with video and audio encoders
+                // Options with video and audio encoders/
                 var mediaOptions = new[]
                 {
                     ":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
