@@ -1,10 +1,16 @@
-# VideoBroadcast
+# VideoBroadcast 
+## Client-Server application written on C# .NET 4.6.1
+
+The repository includes simple console server application desktop Windows Forms server application 
+
+and desktop Windows Forms application.
+
 Video broadcasting via RTP/RTSP or HTTP using VLC library *libvlc* and VlcDotNet wrapper
 from [ZeBobo5](https://github.com/ZeBobo5/Vlc.DotNet).
 
-Tested with libvlc 3.0.3, 3.0.4 and last dev Nuget from ZeBobo5 - 3.0.0-develop296
+All apps were tested with libvlc 3.0.3, 3.0.4, and last dev Nuget from ZeBobo5 - 3.0.0-develop296 versions.
 
-It is necessary to copy libvlc -> win-x86 | win-x64 to the bin Debug or Release folder of your project
+It is necessary to copy libvlc -> win-x86 | win-x64 to your project's bin Debug or Release folder.
 
 Broadcasting is configured on the server side f.e in **Program.cs** with the following parameters:
 
