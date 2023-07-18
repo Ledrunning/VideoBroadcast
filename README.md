@@ -11,23 +11,22 @@ Broadcasting is configured on the server side f.e in **Program.cs** with the fol
 ```
 // Options with any encoders
 var mediaOptions = new[]
-                {
-                    ":sout=#rtp{sdp=rtsp://192.168.1.162:8008/test}",
-                    ":sout-keep"
-                };
+{
+  ":sout=#rtp{sdp=rtsp://192.168.1.162:8008/test}",
+  ":sout-keep"
+};
 ```
 
 or in desktop application in **MainForm.cs** wich is located in **VlcBroadcast folder**:
 
 ```
 // Options with video and audio encoders
-                var mediaOptions = new[]
-                {
-                    ":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
-                    ":sout-all"
-                };
+var mediaOptions = new[]
+{
+  ":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
+   ":sout-all"
+};
 ```
-
 
 ![](https://habrastorage.org/webt/ky/ws/63/kyws63umuabcf1bmpfptecllhxw.png)
 
