@@ -41,13 +41,7 @@ The core of video broadcasting is managed using the `libvlc` library from VLC an
 - [ ] Undertake code refactoring for better maintainability.
 - [ ] Upgrade to the latest .NET version.
 
-## Application Runtime
-(Here, you can provide information on how to run the application, any runtime prerequisites, and other related details.)
-
----
-
-I've provided a basic structure based on the details you've shared. Feel free to expand and adjust based on the specific needs and intricacies of your project.
-### Application runtime:
+## Application runtime:
 
 
 ![](https://habrastorage.org/webt/ky/ws/63/kyws63umuabcf1bmpfptecllhxw.png)
