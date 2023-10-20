@@ -1,6 +1,3 @@
-Certainly! Here's a `README.md` file for your project, "VideoBroadcast":
-
----
 # VideoBroadcast
 
 VideoBroadcast is a Client-Server application written in C# targeting .NET 4.6.1. It focuses on video broadcasting via protocols like RTP/RTSP or HTTP, leveraging the power of the VLC library and the VlcDotNet wrapper.
