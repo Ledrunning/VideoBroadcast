@@ -43,12 +43,6 @@ var mediaOptions = new[]
 };
 ```
 
-### TODO: 
-
-- Make flexible customization and remove the hardcode
-- Code refactoring
-- Migrate to the latest .NET version
-
 ### Application runtime:
 
 ![](https://habrastorage.org/webt/ky/ws/63/kyws63umuabcf1bmpfptecllhxw.png)
