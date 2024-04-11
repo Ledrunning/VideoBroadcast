@@ -1,6 +1,11 @@
 # VideoBroadcast 
 ## Client-Server application written on C# .NET 4.6.1
 
+## Attention!
+At the moment the project is outdated, as the author of the library stopped support and asked to move to the current versions!
+> As more and more effort is put into LibVLCSharp, fewer evolutions are expected to be made to this project.
+> Bugfixes will still be fixed in the maintainer's free time, but as of 2020-05-06, support for libvlc 4 is not planned. You are encouraged to migrate and create new projects with LibVLCSharp
+
 ### Description:
 
 The repository includes simple console server application desktop Windows Forms server application 
