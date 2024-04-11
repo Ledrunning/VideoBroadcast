@@ -51,6 +51,5 @@ var mediaOptions = new[]
 
 ### Application runtime:
 
-
 ![](https://habrastorage.org/webt/ky/ws/63/kyws63umuabcf1bmpfptecllhxw.png)
 
