@@ -1,45 +1,55 @@
-# VideoBroadcast
+# VideoBroadcast 
+## Client-Server application written on C# .NET 4.6.1
 
-VideoBroadcast is a Client-Server application written in C# targeting .NET 4.6.1. It focuses on video broadcasting via protocols like RTP/RTSP or HTTP, leveraging the power of the VLC library and the VlcDotNet wrapper.
+## Attention!
+At the moment the project is outdated, as the author of the library stopped support and asked to move to the current versions!
+> As more and more effort is put into LibVLCSharp, fewer evolutions are expected to be made to this project.
+> Bugfixes will still be fixed in the maintainer's free time, but as of 2020-05-06, support for libvlc 4 is not planned. You are encouraged to migrate and create new projects with LibVLCSharp
 
-## Description
-This repository comprises:
+### Description:
 
-- A simple console-based server application.
-- A desktop Windows Forms server application.
-- A desktop Windows Forms client application.
+The repository includes simple console server application desktop Windows Forms server application 
 
-The core of video broadcasting is managed using the `libvlc` library from VLC and the `VlcDotNet` wrapper by ZeBobo5. The applications have been tested against `libvlc` versions 3.0.3, 3.0.4, and the latest development Nuget from ZeBobo5: version 3.0.0-develop296.
+and desktop Windows Forms application.
 
-## Setup and Configuration
+Video broadcasting via RTP/RTSP or HTTP using VLC library *libvlc* and VlcDotNet wrapper
+from [ZeBobo5](https://github.com/ZeBobo5/Vlc.DotNet).
 
-1. **Library Placement**: Ensure you copy `libvlc` -> `win-x86` or `win-x64` to your project's respective `bin/Debug` or `bin/Release` folder.
-   
-2. **Broadcast Configuration**:
-   - In the console server application, the broadcasting can be configured in `Program.cs`:
-     ```csharp
-     var mediaOptions = new[]
-     {
-         ":sout=#rtp{sdp=rtsp://192.168.1.162:8008/test}",
-         ":sout-keep"
-     };
-     ```
-   - For the desktop application located in the `VlcBroadcast` folder (`MainForm.cs`), you can configure it as:
-     ```csharp
-     var mediaOptions = new[]
-     {
-         ":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
-         ":sout-all"
-     };
-     ```
+All apps were tested with libvlc 3.0.3, 3.0.4, and last dev Nuget from ZeBobo5 - 3.0.0-develop296 versions.
 
-## To-Do List
-- [ ] Enable more flexible customization options, replacing hardcoded values.
-- [ ] Undertake code refactoring for better maintainability.
-- [ ] Upgrade to the latest .NET version.
+### Setup and configuration:
 
-## Application runtime:
+It is necessary to copy libvlc -> win-x86 | win-x64 to your project's bin Debug or Release folder.
 
+Broadcasting is configured on the server side f.e in **Program.cs** with the following parameters:
+
+```
+// Options with any encoders
+var mediaOptions = new[]
+{
+  ":sout=#rtp{sdp=rtsp://192.168.1.162:8008/test}",
+  ":sout-keep"
+};
+```
+
+or in desktop application in **MainForm.cs** wich is located in **VlcBroadcast folder**:
+
+```
+// Options with video and audio encoders
+var mediaOptions = new[]
+{
+  ":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ffmpeg{mux=flv},dst=:8080/}",
+   ":sout-all"
+};
+```
+
+### TODO: 
+
+- Make flexible customization and remove the hardcode
+- Code refactoring
+- Migrate to the latest .NET version
+
+### Application runtime:
 
 ![](https://habrastorage.org/webt/ky/ws/63/kyws63umuabcf1bmpfptecllhxw.png)
 
